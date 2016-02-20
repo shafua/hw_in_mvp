@@ -1,9 +1,9 @@
 var VIEWMODEL = (function (module) {
 	var module = module || {};
 
-	// quantity.onchange = order.onchange = function () {
-	// 	setData();
-	// }
+	quantity.onchange = order.onchange = function () {
+		setData();
+	}
 
 
 	return module

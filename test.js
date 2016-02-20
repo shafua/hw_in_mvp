@@ -1,22 +1,22 @@
 describe("binding data", function() {
-	var quantity = 5;
-	var	order = 7;
+	var q = 5;
+	var	o = 7;
 	var resulting;
 	before(function() {
-		quantity.innerHTML = quantity;
-		order.innerHTML = order;
+		quantity.value = q;
+		order.value = o;
 		results.innerHTML = ''
-		//order.onchange();
+		order.onchange();
+
 	});
 
   it("showed right quantity of data", function() {
-
-  	chai.assert.strictEqual(results.innerHTML.split(" ,").length - 1, quantity)
+  	chai.assert.strictEqual(results.innerHTML.split(",").length, q)
   });
 
   it("showed right order of data", function() {
 
-  	results.innerHTML.split(" ,").forEach( function (item) { chai.expect(item.length).below(order); });
+  	results.innerHTML.split(",").forEach( function (item) {chai.expect(item.replace(/[^-0-9]/gim,'').length).below(o+1); });
   });
 
 });
