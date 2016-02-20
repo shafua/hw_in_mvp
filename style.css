@@ -1,0 +1,16 @@
+article, aside, details, figcaption, figure, footer, header,
+hgroup, menu, nav, section {
+  display: block; }
+
+* {
+  font-family: Helvetica, sans-serif; }
+
+#main {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  min-height: 300px;
+  padding-top: 23pt; }
+
+#conditions input[type=number] {
+  width: 40px; }
