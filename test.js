@@ -11,12 +11,12 @@ describe("binding data", function() {
 	});
 
   it("showed right quantity of data", function() {
-  	chai.assert.strictEqual(results.innerHTML.split(",").length, q)
+  	chai.assert.strictEqual(results.innerHTML.split(", ").length, q)
   });
 
   it("showed right order of data", function() {
 
-  	results.innerHTML.split(",").forEach( function (item) {chai.expect(item.replace(/[^-0-9]/gim,'').length).below(o+1); });
+  	results.innerHTML.split(", ").forEach( function (item) {chai.expect(item.length).below(o+1); });
   });
 
 });
