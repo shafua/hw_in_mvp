@@ -5,7 +5,7 @@ var MODEL = (function (module) {
 		return (new Array(quantity)).map( function () { return generateRandomInteger(order) } )
 	}
 
-	module.generateRandomInteger = function (order) {
+	module.__generateRandomInteger = function (order) {
 		order = order || 1;
 		return Math.round( Math.random() * Math.pow(10, order) )
 	}
