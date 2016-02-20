@@ -1,13 +1,16 @@
 describe("get data", function() {
-	var output = MODEL.getData();
+	var length = 2, output = MODEL.getData(length);
 
   it("returns array", function() {
-    chai.expect(output).to.be.instanceof(Array);
+    chai.assert.isArray(output, "output is array");
+  });
+
+  it("returns right length", function() {
+    chai.assert.lengthOf(output,length);
   });
 
   it("returns array of numbers", function() {
-
-   output.forEach( function (item) { chai.expect(item).to.be.a("number")});
+   output.forEach( function (item) { chai.assert.isNumber(item, "item of output is number"); });
   });
 
 });

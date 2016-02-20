@@ -3,7 +3,7 @@ MODEL = (function (module) {
 	var module = module || {};
 
 	module.getData = function (quantity,order) {
-		return [5,7,"8"]
+		return (new Array(quantity)).map( function () { return generateRandomInteger(order) } )
 	}
 
 	module.generateRandomInteger = function (order) {
