@@ -1,12 +1,39 @@
+describe("binding data", function() {
+	var quantity = 5;
+	var	order = 7;
+	var resulting;
+	before(function() {
+		quantity.innerHTML = quantity;
+		order.innerHTML = order;
+		results.innerHTML = ''
+		//order.onchange();
+	});
+
+  it("showed right quantity of data", function() {
+
+  	chai.assert.strictEqual(results.innerHTML.split(" ,").length - 1, quantity)
+  });
+
+  it("showed right order of data", function() {
+
+  	results.innerHTML.split(" ,").forEach( function (item) { chai.expect(item.length).below(order); });
+  });
+
+});
+
+
+
+
 describe("showing data", function() {
 	var input = [10,22,34,85,2,34];
+	before(function() {  
+		VIEW.showData(input);
+	});
 
-	VIEW.showData(input);
+	afterEach(function() { results.innerHTML = "" });
 
   it("show data", function() {
     chai.expect(results.innerHTML).to.have.string(input.join(", "));
-
-    results.innerHTML = ""
 
   });
 
@@ -25,7 +52,7 @@ describe("get data", function() {
   });
 
   it("returns array of numbers", function() {
-   output.forEach( function (item) { chai.assert.isNumber(item, "item of output is number"); });
+   for(var i = 0; i < output.length; i++) {chai.assert.isNumber(output[i], "item#"+i+" of output is not number"); }
   });
 
 });
