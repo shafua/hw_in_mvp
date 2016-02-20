@@ -1,3 +1,15 @@
+describe("showing data", function() {
+	var input = [10,22,34,85,2,34];
+
+	VIEW.showData(input);
+
+  it("show data", function() {
+    chai.expect(results.innerHTML).to.have.string(input.join(", "));
+  });
+
+});
+
+
 describe("get data", function() {
 	var length = 2, output = MODEL.getData(length);
 

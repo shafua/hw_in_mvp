@@ -1,5 +1,4 @@
-var MODEL;
-MODEL = (function (module) {
+var MODEL = (function (module) {
 	var module = module || {};
 
 	module.getData = function (quantity,order) {
