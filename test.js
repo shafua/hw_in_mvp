@@ -20,12 +20,12 @@ describe("get random integer", function() {
 
 
   it("returns integer", function() {
-    chai.assetr.strictEqual(MODEL.generateRandomInteger() % 1, 0, "is integer")
+    chai.assert.strictEqual(MODEL.generateRandomInteger() % 1, 0, "is integer")
   });
 
   var order = 2;
   it("returns right order", function() {
-    chai.assetr.isBelow(MODEL.generateRandomInteger(order), Math.pow(10,order+1), "have right order")
+    chai.assert.isBelow(MODEL.generateRandomInteger(order), Math.pow(10,order+1), "have right order")
   });
 
 });

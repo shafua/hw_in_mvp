@@ -7,8 +7,7 @@ MODEL = (function (module) {
 	}
 
 	module.generateRandomInteger = function (order) {
-		order = 1 || order || 1;
-		return Math.random() * Math.pow(10, order)
+		order = order || 1;
 		return Math.round( Math.random() * Math.pow(10, order) )
 	}
 
