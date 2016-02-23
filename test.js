@@ -1,22 +1,50 @@
-describe("binding data", function() {
-	var q = 5;
-	var	o = 7;
-	var resulting;
-	before(function() {
-		quantity.value = q;
-		order.value = o;
-		results.innerHTML = ''
-		order.onchange();
+var Assert = chai.assert;
+var Expect = chai.expect;
 
+
+
+describe("data correctness", function() {
+	before(function() {
+		quantity_field.value = 5;
+		order_field.value = 7;
+		results.innerHTML = ''
+		order_field.onchange();
 	});
 
   it("showed right quantity of data", function() {
-  	chai.assert.strictEqual(results.innerHTML.split(", ").length, q)
+    var q = +quantity_field.value;
+  	Assert.strictEqual(results.innerHTML.split(", ").length, q)
   });
 
   it("showed right order of data", function() {
+  	var items = results.innerHTML.split(", ");
+    var o = order_field.value;
+    for(var i = 0; i < items.length; i++) Expect(items[i].length).below(o+1);
+  });
 
-  	results.innerHTML.split(", ").forEach( function (item) {chai.expect(item.length).below(o+1); });
+});
+
+describe("right plural", function() {
+  describe("case of 1", function() {
+  	before(function() {
+  		quantity_field.value = 1;
+  		order_field.onchange();
+  	});
+
+    it("showed right plural word 'number' ", function() {
+    	Expect(plural_word.innerHTML).to.equal("number&nbsp;");
+    });
+  });
+
+  describe("plural cases", function() {
+      before(function() {
+        quantity_field.value = 25;
+        order_field.onchange();
+      });
+
+    it("showed right plural word 'number' ", function() {
+    	Expect(plural_word.innerHTML).to.equal("numbers");
+    });
   });
 
 });
@@ -32,45 +60,51 @@ describe("showing data", function() {
 
 	afterEach(function() { results.innerHTML = "" });
 
-  it("show data", function() {
-    chai.expect(results.innerHTML).to.have.string(input.join(", "));
+  it("showing of data", function() {
+    Expect(results.innerHTML).to.have.string(input.join(", "));
 
   });
 
 });
 
 
-describe("get data", function() {
+
+
+describe("getting of data", function() {
 	var length = 2, output = MODEL.getData(length);
 
   it("returns array", function() {
-    chai.assert.isArray(output, "output is array");
+    Assert.isArray(output, "output is array");
   });
 
   it("returns right length", function() {
-    chai.assert.lengthOf(output,length);
+    Assert.lengthOf(output,length);
   });
 
   it("returns array of numbers", function() {
-   for(var i = 0; i < output.length; i++) {chai.assert.isNumber(output[i], "item#"+i+" of output is not number"); }
+   for(var i = 0; i < output.length; i++) Assert.isNumber(output[i], "item#"+i+" of output is not number");
   });
 
 });
 
-describe("get random integer", function() {
+
+
+
+describe("getting of random integer", function() {
 
   it("returns number", function() {
-    chai.expect(MODEL.__generateRandomInteger()).to.be.a("number");
+    Expect(MODEL.__generateRandomInteger()).to.be.a("number");
   });
 
 
   it("returns integer", function() {
-    chai.assert.strictEqual(MODEL.__generateRandomInteger() % 1, 0, "is integer")
+    Assert.strictEqual(MODEL.__generateRandomInteger() % 1, 0, "is integer")
   });
 
-  var order = 2;
+  
   it("returns right order", function() {
-    chai.assert.isBelow(MODEL.__generateRandomInteger(order), Math.pow(10,order+1), "have right order")
+    var order = 2;
+    Assert.isBelow(MODEL.__generateRandomInteger(order), Math.pow(10,order+1), "have right order")
   });
 
 });

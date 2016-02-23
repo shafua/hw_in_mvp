@@ -1,14 +1,9 @@
 var PRESENTER = (function (module) {
 	var module = module || {};
 
-	quantity.onchange = order.onchange = function () {
-		setData();
-	}
-
-
-	return module
-
-	function setData() {
-		VIEW.showData( MODEL.getData( +quantity.value, +order.value ) )
-	}
+	quantity_field.onchange = order_field.onchange = function () {
+		VIEW.showData( MODEL.getData( +quantity_field.value, +order_field.value ) )
+	};
+	
+	return module	
 })(PRESENTER);
